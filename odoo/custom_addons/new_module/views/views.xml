@@ -1,60 +1,55 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="new_module.list">
-      <field name="name">new_module list</field>
-      <field name="model">new_module.new_module</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="new_module.action_window">
-      <field name="name">new_module window</field>
-      <field name="res_model">new_module.new_module</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+  <record id="wb_student_tree_view" model="ir.ui.view">
+    <field name="name">wb.student.tree.view</field>
+    <field name="model">wb.student</field>
+    <field name="arch" type="xml">
+      <tree>
+           <field name="name"></field>
+           <field name="name1"></field> 
+      </tree>
+    </field>
+  </record>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="new_module.action_server">
-      <field name="name">new_module server</field>
-      <field name="model_id" ref="model_new_module_new_module"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
+  <record id="wb_student_form_view" model="ir.ui.view">
+    <field name="name">mwb.student.form.view</field>
+    <field name="model">wb.student</field>
+    <field name="arch" type="xml">
+      <form string="Student">
+          <group>
+            <group>
+              <field name="name"></field>
+              <field name="name1"></field>
+              <field name="name2"></field>
+              <field name="name3"></field>
+              <field name="name4"></field>
+            </group>
+          </group>
+      </form>
+    </field>
+  </record>
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="new_module" id="new_module.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="new_module.menu_1" parent="new_module.menu_root"/>
-    <menuitem name="Menu 2" id="new_module.menu_2" parent="new_module.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="new_module.menu_1_list" parent="new_module.menu_1"
-              action="new_module.action_window"/>
-    <menuitem name="Server to list" id="new_module" parent="new_module.menu_2"
-              action="new_module.action_server"/>
--->
-  </data>
+  <record id="wb_student_action" model="ir.actions.act_window">
+    <field name="name">Student</field>
+    <field name="res_model">wb.student</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  
+  <menuitem
+    id="wb_student_root_menu"
+    name="Student"
+    />
+  
+  <menuitem
+    id="wb_student_sub_root_menu"
+    name="Student"
+    parent="wb_student_root_menu"
+    />
+  <menuitem
+    id="wb_student_menu"
+    action="wb_student_action" 
+    name="Student List"
+    parent="wb_student_sub_root_menu"
+    />
+
 </odoo>
