@@ -1,6 +1,6 @@
 # sphinx build directories
 _build/
-
+weblearns.conf
 # dotfiles
 .*
 !.gitignore

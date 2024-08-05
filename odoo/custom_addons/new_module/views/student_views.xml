@@ -1,12 +1,66 @@
 <odoo>
 
+  <record id="wb_lesson_tree_view" model="ir.ui.view">
+    <field name="name">wb.lesson.tree.view</field>
+    <field name="model">wb.lesson</field>
+    <field name="arch" type="xml">
+      <tree>
+           <field name="name"></field>
+           <field name="teacher_id"></field> 
+      </tree>
+    </field>
+  </record>
+
+  <record id="wb_Lesson_form_view" model="ir.ui.view">
+    <field name="name">wb.lesson.form.view</field>
+    <field name="model">wb.lesson</field>
+    <field name="arch" type="xml">
+      <form string="Lesson">
+          <group>
+            <group>
+              <field name="name"></field>
+              <field name="start_time"></field>
+              <field name="end_time"></field>
+              <field name="school_days"></field>
+              <field name="cost"></field>
+              <field name="teacher_id"></field>
+            </group>
+          </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="wb_lesson_action" model="ir.actions.act_window">
+    <field name="name">Lesson</field>
+    <field name="res_model">wb.lesson</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  
+  <menuitem
+    id="wb_lesson_root_menu"
+    name="Lesson"
+    />
+  
+  <menuitem
+    id="wb_lesson_sub_root_menu"
+    name="Lesson"
+    parent="wb_lesson_root_menu"
+    />
+  <menuitem
+    id="wb_lesson_menu"
+    action="wb_lesson_action" 
+    name="Lesson List"
+    parent="wb_lesson_sub_root_menu"
+    />
+
+
   <record id="wb_student_tree_view" model="ir.ui.view">
     <field name="name">wb.student.tree.view</field>
     <field name="model">wb.student</field>
     <field name="arch" type="xml">
       <tree>
            <field name="name"></field>
-           <field name="name1"></field> 
+           <field name="number"></field> 
       </tree>
     </field>
   </record>
@@ -19,10 +73,11 @@
           <group>
             <group>
               <field name="name"></field>
-              <field name="name1"></field>
-              <field name="name2"></field>
-              <field name="name3"></field>
-              <field name="name4"></field>
+              <field name="surname"></field>
+              <field name="date"></field>
+              <field name="number"></field>
+              <field name="balance"></field>
+              <field name="lesson_id"></field>
             </group>
           </group>
       </form>
@@ -50,6 +105,59 @@
     action="wb_student_action" 
     name="Student List"
     parent="wb_student_sub_root_menu"
+    />
+
+
+  <record id="wb_teacher_tree_view" model="ir.ui.view">
+    <field name="name">wb.teacher.tree.view</field>
+    <field name="model">wb.teacher</field>
+    <field name="arch" type="xml">
+      <tree>
+           <field name="name"></field>
+           <field name="lesson_id"></field> 
+      </tree>
+    </field>
+  </record>
+
+  <record id="wb_teacher_form_view" model="ir.ui.view">
+    <field name="name">wb.teacher.form.view</field>
+    <field name="model">wb.teacher</field>
+    <field name="arch" type="xml">
+      <form string="Teacher">
+          <group>
+            <group>
+              <field name="name"></field>
+              <field name="surname"></field>
+              <field name="type_of_lesson"></field>
+              <field name="salary"></field>
+              <field name="lesson_id"></field>
+            </group>
+          </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="wb_teacher_action" model="ir.actions.act_window">
+    <field name="name">Teacher</field>
+    <field name="res_model">wb.teacher</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  
+  <menuitem
+    id="wb_teacher_root_menu"
+    name="Teacher"
+    />
+  
+  <menuitem
+    id="wb_teacher_sub_root_menu"
+    name="Teacher"
+    parent="wb_teacher_root_menu"
+    />
+  <menuitem
+    id="wb_teacher_menu"
+    action="wb_teacher_action" 
+    name="Teacher List"
+    parent="wb_teacher_sub_root_menu"
     />
 
 </odoo>
