@@ -69,7 +69,7 @@ export class NavBar extends Component {
             this.env.bus.removeEventListener("MENUS:APP-CHANGED", renderAndAdapt);
         });
 
-        // We don't want to adapt every time we are patched
+        // We don't want to adapt every time we are patched AppsMenu
         // rather, we adapt only when menus or systrays have changed.
         useEffect(
             () => {
